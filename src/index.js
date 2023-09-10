@@ -1,17 +1,54 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React,{useState} from 'react';
+import ReactDOM from 'react-dom';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import './styles/main.css' 
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  
+  const [modalvisible,setModalVisible] = useState(false);
+  
+  return (
+    <div>
+      <div className='header'>
+        <div className='logo'>
+          <p className='title'>Guest Book</p>
+        </div>
+        <div className='add-section'>
+          <a href='#' className='add-btn'>Add Note</a>
+        </div>
+      </div>
+      <div className='posts'>
+        <p className='centerText'>No Posts</p>
+      </div>
+      <div className='modal'>
+        <div className='form'>
+          <div className='form-header'>
+            <div>
+              <p className='form-header-text'>Create a Note</p>
+            </div>
+            <div>
+              <a className='close-btn' href='#'>X</a>
+            </div>
+          </div>
+          <form action=''>
+            <div className='form-group'>
+              <label htmlFor='title'>Title</label>
+              <input type='text' name='title' id='title' className='form-control'/>
+            </div>
+
+            <div className='form-group'>
+              <label htmlFor='content'>Content</label>
+              <textarea name='content' id='' cols="30" rows="5" className='form-control'></textarea>
+            </div>
+            <div className='form-group'>
+              <input type='submit' className='btn' value='Save'/> 
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.querySelector('#root'));
